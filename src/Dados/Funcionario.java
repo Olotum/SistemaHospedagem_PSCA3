@@ -1,6 +1,6 @@
 package Dados;
 
-public class Funcionario extends Pessoa implements fazerReserva{
+public class Funcionario extends Pessoa implements FazerReserva, NewPessoa {
     private String cargo;
     private Double salario;
 

@@ -54,4 +54,15 @@ public class Reserva  {
     public void setSaida(String saida) {
         this.saida = saida;
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "acomodacao=" + acomodacao +
+                ", cliente=" + cliente +
+                ", pessoa=" + pessoa +
+                ", entrada='" + entrada + '\'' +
+                ", saida='" + saida + '\'' +
+                '}';
+    }
 }

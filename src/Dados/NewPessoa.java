@@ -1,14 +1,6 @@
 package Dados;
 import javax.swing.JOptionPane;
 public interface NewPessoa {
-    //String TNOME = "temp";
-/*    String TCPF = "temp";
-    int TIDADE = 0;
-    String TEMAIL = "temp";
-    String TNACIONALIDADE = "temp";
-    String TNIVEL = "temp";
-    String TCARGO = "temp";
-     SALARIO = "temp";*/
     public default Cliente newCliente(){
         String nome = JOptionPane.showInputDialog(
                 "Digite o nome:");
