@@ -1,6 +1,6 @@
 package Dados;
 
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa implements fazerReserva{
     private String cargo;
     private Double salario;
 
@@ -26,3 +26,5 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
     }
 }
+
+

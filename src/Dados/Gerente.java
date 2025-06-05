@@ -1,6 +1,6 @@
 package Dados;
 
-public class Gerente extends Pessoa{
+public class Gerente extends Pessoa implements fazerReserva{
     private String cargo;
     private String salario;
 

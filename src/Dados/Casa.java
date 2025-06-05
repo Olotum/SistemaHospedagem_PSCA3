@@ -1,4 +1,4 @@
-package dados;
+package Dados;
 
 public class Casa extends Acomodacao{
     private int numeroDeQuartos;

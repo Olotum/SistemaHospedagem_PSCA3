@@ -1,26 +1,26 @@
 package Dados;
 
-public class Reserva {
-    private Locacao locacao;
+public class Reserva  {
+    private Acomodacao acomodacao;
     private Cliente cliente;
-    private  Funcionario funcionario;
+    private  Pessoa pessoa;
     private String entrada;
     private String saida;
 
-    public Reserva(Locacao locacao, Cliente cliente, Funcionario funcionario, String entrada, String saida) {
-        this.locacao = locacao;
+    public Reserva(Acomodacao acomodacao, Cliente cliente, Pessoa pessoa, String entrada, String saida) {
+        this.acomodacao = acomodacao;
         this.cliente = cliente;
-        this.funcionario = funcionario;
+        this.pessoa = pessoa;
         this.entrada = entrada;
         this.saida = saida;
     }
 
-    public Locacao getLocacao() {
-        return locacao;
+    public Acomodacao getLocacao() {
+        return acomodacao;
     }
 
-    public void setLocacao(Locacao locacao) {
-        this.locacao = locacao;
+    public void setLocacao(Acomodacao acomodacao) {
+        this.acomodacao = acomodacao;
     }
 
     public Cliente getCliente() {
@@ -31,12 +31,12 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public Pessoa getpessoa() {
+        return pessoa;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setpessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public String getEntrada() {
