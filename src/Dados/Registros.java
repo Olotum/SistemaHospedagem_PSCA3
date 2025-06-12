@@ -152,73 +152,86 @@ default Casa newCasa(Acomodacao[] acomodacoes, Empresa[] empresas) {
         return null;
     }
 
-    default Reserva newReserva(Reserva[] reservas, Acomodacao[] acomodacoes, Cliente[] clientes, Pessoa[] pessoas) {
-        // Buscar acomodação
-        String nomeAcomodacao = JOptionPane.showInputDialog("Digite o nome da acomodação:");
-        Acomodacao acomodacaoSelecionada = null;
-        for (Acomodacao a : acomodacoes) {
-            if (a != null && a.getNome().equalsIgnoreCase(nomeAcomodacao)) {
-                acomodacaoSelecionada = a;
+    default Reserva newReserva(Reserva[] reservas, Casa[] casas, Hotel[] hoteis, Cliente[] clientes, Pessoa[] pessoas) {
+    // Buscar acomodação
+    String nomeAcomodacao = JOptionPane.showInputDialog("Digite o nome da acomodação (casa ou hotel):");
+    Acomodacao acomodacaoSelecionada = null;
+
+    // Procurar nas casas
+    for (Casa casa : casas) {
+        if (casa != null && casa.getNome().equalsIgnoreCase(nomeAcomodacao)) {
+            acomodacaoSelecionada = casa;
+            break;
+        }
+    }
+
+    // Se não encontrou na casa, procurar nos hotéis
+    if (acomodacaoSelecionada == null) {
+        for (Hotel hotel : hoteis) {
+            if (hotel != null && hotel.getNome().equalsIgnoreCase(nomeAcomodacao)) {
+                acomodacaoSelecionada = hotel;
                 break;
             }
         }
-        if (acomodacaoSelecionada == null) {
-            JOptionPane.showMessageDialog(null, "Acomodação não encontrada.");
-            return null;
-        }
+    }
 
-        // Buscar cliente
-        String cpfCliente = JOptionPane.showInputDialog("Digite o CPF do cliente:");
-        Cliente clienteSelecionado = null;
-        for (Cliente c : clientes) {
-            if (c != null && c.getCpf().equals(cpfCliente)) {
-                clienteSelecionado = c;
-                break;
-            }
-        }
-        if (clienteSelecionado == null) {
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado.");
-            return null;
-        }
-
-        // Buscar pessoa (hóspede)
-        String cpfPessoa = JOptionPane.showInputDialog("Digite o CPF da pessoa hospedada:");
-        Pessoa pessoaSelecionada = null;
-        for (Pessoa p : pessoas) {
-            if (p != null && p.getCpf().equals(cpfPessoa)) {
-                pessoaSelecionada = p;
-                break;
-            }
-        }
-        if (pessoaSelecionada == null) {
-            JOptionPane.showMessageDialog(null, "Pessoa não encontrada.");
-            return null;
-        }
-
-        // Informações de reserva
-        String entrada = JOptionPane.showInputDialog("Digite a data de entrada (ex: 12/06/2025):");
-        String saida = JOptionPane.showInputDialog("Digite a data de saída (ex: 14/06/2025):");
-
-        int confirmar = JOptionPane.showConfirmDialog(null, "Deseja confirmar a reserva?");
-        if (confirmar == JOptionPane.YES_OPTION) {
-            Reserva novaReserva = new Reserva(acomodacaoSelecionada, clienteSelecionado, pessoaSelecionada, entrada, saida);
-
-            // Adicionar na primeira posição livre
-            for (int i = 0; i < reservas.length; i++) {
-                if (reservas[i] == null) {
-                    reservas[i] = novaReserva;
-                    JOptionPane.showMessageDialog(null, "Reserva cadastrada com sucesso!");
-                    return novaReserva;
-                }
-            }
-
-            JOptionPane.showMessageDialog(null, "Lista de reservas cheia!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Cadastro de reserva cancelado.");
-        }
-
+    if (acomodacaoSelecionada == null) {
+        JOptionPane.showMessageDialog(null, "Acomodação não encontrada.");
         return null;
     }
+
+    // Buscar cliente
+    String cpfCliente = JOptionPane.showInputDialog("Digite o CPF do cliente:");
+    Cliente clienteSelecionado = null;
+    for (Cliente c : clientes) {
+        if (c != null && c.getCpf().equals(cpfCliente)) {
+            clienteSelecionado = c;
+            break;
+        }
+    }
+    if (clienteSelecionado == null) {
+        JOptionPane.showMessageDialog(null, "Cliente não encontrado.");
+        return null;
+    }
+
+    // Buscar pessoa (hóspede)
+    String cpfPessoa = JOptionPane.showInputDialog("Digite o CPF da pessoa hospedada:");
+    Pessoa pessoaSelecionada = null;
+    for (Pessoa p : pessoas) {
+        if (p != null && p.getCpf().equals(cpfPessoa)) {
+            pessoaSelecionada = p;
+            break;
+        }
+    }
+    if (pessoaSelecionada == null) {
+        JOptionPane.showMessageDialog(null, "Pessoa não encontrada.");
+        return null;
+    }
+
+    // Informações de reserva
+    String entrada = JOptionPane.showInputDialog("Digite a data de entrada (ex: 12/06/2025):");
+    String saida = JOptionPane.showInputDialog("Digite a data de saída (ex: 14/06/2025):");
+
+    int confirmar = JOptionPane.showConfirmDialog(null, "Deseja confirmar a reserva?");
+    if (confirmar == JOptionPane.YES_OPTION) {
+        Reserva novaReserva = new Reserva(acomodacaoSelecionada, clienteSelecionado, pessoaSelecionada, entrada, saida);
+
+        // Adicionar na primeira posição livre
+        for (int i = 0; i < reservas.length; i++) {
+            if (reservas[i] == null) {
+                reservas[i] = novaReserva;
+                JOptionPane.showMessageDialog(null, "Reserva cadastrada com sucesso!");
+                return novaReserva;
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Lista de reservas cheia!");
+    } else {
+        JOptionPane.showMessageDialog(null, "Cadastro de reserva cancelado.");
+    }
+
+    return null;
+}
 
 
 
