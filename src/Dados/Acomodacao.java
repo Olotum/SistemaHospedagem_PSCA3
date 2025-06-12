@@ -4,14 +4,12 @@ public class Acomodacao  {
     private Empresa empresa;
     private String endereco;
     private String nome;
-    private String tipo;
 
 
-    public Acomodacao(Empresa empresa, String endereco, String nome, String tipo) {
+    public Acomodacao(Empresa empresa, String endereco, String nome) {
         this.empresa = empresa;
         this.endereco = endereco;
         this.nome = nome;
-        this.tipo = tipo;
     }
 
     public Empresa getEmpresa() {
@@ -36,13 +34,5 @@ public class Acomodacao  {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 }

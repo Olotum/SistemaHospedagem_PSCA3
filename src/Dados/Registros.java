@@ -39,48 +39,85 @@ public interface Registros {
         return null;
     }
 
-    default  Acomodacao newAcomodacao(Acomodacao[] acomodacoes, Empresa[] empresas) {
-        String cnpj = JOptionPane.showInputDialog("Digite o CNPJ da empresa:");
+    default Hotel newHotel(Acomodacao[] acomodacoes, Empresa[] empresas) {
+    String cnpj = JOptionPane.showInputDialog("Digite o CNPJ da empresa:");
 
-        // Buscar a empresa pelo CNPJ
-        Empresa empresaEncontrada = null;
-        for (Empresa e : empresas) {
-            if (e != null && e.getCnpj().equals(cnpj)) {
-                empresaEncontrada = e;
-                break;
-            }
+    Empresa empresaEncontrada = null;
+    for (Empresa e : empresas) {
+        if (e != null && e.getCnpj().equals(cnpj)) {
+            empresaEncontrada = e;
+            break;
         }
+    }
 
-        if (empresaEncontrada == null) {
-            JOptionPane.showMessageDialog(null, "Empresa com esse CNPJ não encontrada.");
-            return null;
-        }
-
-        // Dados da acomodação
-        String nome = JOptionPane.showInputDialog("Digite o nome da acomodação:");
-        String endereco = JOptionPane.showInputDialog("Digite o endereço:");
-        String tipo = JOptionPane.showInputDialog("Digite o tipo da acomodação:");
-
-        int confirmar = JOptionPane.showConfirmDialog(null, "Deseja cadastrar esta acomodação?");
-        if (confirmar == JOptionPane.YES_OPTION) {
-            Acomodacao nova = new Acomodacao(empresaEncontrada, endereco, nome, tipo);
-
-            // Adicionar na primeira posição nula
-            for (int i = 0; i < acomodacoes.length; i++) {
-                if (acomodacoes[i] == null) {
-                    acomodacoes[i] = nova;
-                    JOptionPane.showMessageDialog(null, "Acomodação cadastrada com sucesso!");
-                    return nova;
-                }
-            }
-
-            JOptionPane.showMessageDialog(null, "Lista de acomodações cheia!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Cadastro cancelado.");
-        }
-
+    if (empresaEncontrada == null) {
+        JOptionPane.showMessageDialog(null, "Empresa com esse CNPJ não encontrada.");
         return null;
     }
+
+    String nome = JOptionPane.showInputDialog("Digite o nome do hotel:");
+    String endereco = JOptionPane.showInputDialog("Digite o endereço:");
+    String tipo = JOptionPane.showInputDialog("Digite o tipo do hotel:");
+    int numeroDoQuarto = Integer.parseInt(JOptionPane.showInputDialog("Digite o número do quarto:"));
+
+    int confirmar = JOptionPane.showConfirmDialog(null, "Deseja cadastrar este hotel?");
+    if (confirmar == JOptionPane.YES_OPTION) {
+        Hotel hotel = new Hotel(empresaEncontrada, endereco, nome, tipo, numeroDoQuarto);
+        for (int i = 0; i < acomodacoes.length; i++) {
+            if (acomodacoes[i] == null) {
+                acomodacoes[i] = hotel;
+                JOptionPane.showMessageDialog(null, "Hotel cadastrado com sucesso!");
+                return hotel;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Lista de acomodações cheia!");
+    } else {
+        JOptionPane.showMessageDialog(null, "Cadastro cancelado.");
+    }
+
+    return null;
+}
+
+default Casa newCasa(Acomodacao[] acomodacoes, Empresa[] empresas) {
+    String cnpj = JOptionPane.showInputDialog("Digite o CNPJ da empresa:");
+
+    Empresa empresaEncontrada = null;
+    for (Empresa e : empresas) {
+        if (e != null && e.getCnpj().equals(cnpj)) {
+            empresaEncontrada = e;
+            break;
+        }
+    }
+
+    if (empresaEncontrada == null) {
+        JOptionPane.showMessageDialog(null, "Empresa com esse CNPJ não encontrada.");
+        return null;
+    }
+
+    String nome = JOptionPane.showInputDialog("Digite o nome da casa:");
+    String endereco = JOptionPane.showInputDialog("Digite o endereço:");
+    String tipo = JOptionPane.showInputDialog("Digite o tipo da casa:");
+    int numeroDeQuartos = Integer.parseInt(JOptionPane.showInputDialog("Digite o número de quartos:"));
+
+    int confirmar = JOptionPane.showConfirmDialog(null, "Deseja cadastrar esta casa?");
+    if (confirmar == JOptionPane.YES_OPTION) {
+        Casa casa = new Casa(empresaEncontrada, endereco, nome, tipo, numeroDeQuartos);
+        for (int i = 0; i < acomodacoes.length; i++) {
+            if (acomodacoes[i] == null) {
+                acomodacoes[i] = casa;
+                JOptionPane.showMessageDialog(null, "Casa cadastrada com sucesso!");
+                return casa;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Lista de acomodações cheia!");
+    } else {
+        JOptionPane.showMessageDialog(null, "Cadastro cancelado.");
+    }
+
+    return null;
+}
+
+
     default Empresa newEmpresa(Empresa[] empresas) {
         String cnpj = JOptionPane.showInputDialog("Digite o CNPJ:");
 

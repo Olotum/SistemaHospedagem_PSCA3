@@ -1,22 +1,23 @@
 package Dados;
 
 public class Hotel extends Acomodacao{
-    private int numeroDeQuartos;
+    private int numeroDoQuarto;
     private String tipo;
 
 
-    public Hotel(Empresa empresa, String endereco, String nome, String tipo, int numeroDeQuartos, String tipo1) {
-        super(empresa, endereco, nome, tipo);
-        this.numeroDeQuartos = numeroDeQuartos;
-        this.tipo = tipo1;
+    public Hotel(Empresa empresa, String endereco, String nome, String tipo, int numeroDoQuarto) {
+        super(empresa, endereco, nome);
+        this.numeroDoQuarto = numeroDoQuarto;
+        this.tipo = tipo;
     }
 
-    public int getNumeroDeQuartos() {
-        return numeroDeQuartos;
+
+    public int getnumeroDoQuarto() {
+        return numeroDoQuarto;
     }
 
-    public void setNumeroDeQuartos(int numeroDeQuartos) {
-        this.numeroDeQuartos = numeroDeQuartos;
+    public void setnumeroDoQuarto(int numeroDoQuarto) {
+        this.numeroDoQuarto = numeroDoQuarto;
     }
 
     public String getTipo() {
