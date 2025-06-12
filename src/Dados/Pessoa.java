@@ -1,6 +1,6 @@
 package Dados;
 
-public abstract class Pessoa implements NewCliente {
+public abstract class Pessoa {
     private String nome;
     private String cpf;
     private int idade;

@@ -1,10 +1,10 @@
 package Dados;
 
-public class Funcionario extends Pessoa implements FazerReserva {
+public class Funcionario extends Pessoa implements Registros {
     private String cargo;
-    private Double salario;
+    private double salario;
 
-    public Funcionario(String nome, String cpf, int idade, String email, String cargo, Double salario) {
+    public Funcionario(String nome, String cpf, int idade, String email, String cargo, double salario) {
         super(nome, cpf, idade, email);
         this.cargo = cargo;
         this.salario = salario;
